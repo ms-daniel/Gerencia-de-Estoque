@@ -1,0 +1,27 @@
+Sistema: Registro de Estoque
+
+Objetivo: permitir registro de itens com estoque, registro de entrada/saída, além de seus fornecedores.
+
+Casos de uso/Requisitos Funcionais:
+- Manter Usuário (CRUD)
+- Manter Estabelecimento/Loja (CRUD)
+- Manter Item/Produto (CRUD)
+- Cadastrar entrada/saída
+    - Registrar de entrada e saída de item/produto
+- Manter Fornecedores (CRUD)
+- Autenticar
+    - Login
+    - Logout
+    - Recuperação de Senha
+
+Poderia entrar notificações e alertas também.
+
+
+Tecnologias:
+Frontend: Angular + Tailwind
+Backend: Laravel 
+DB: PostgreSQL/MySQL
+Versionamento será feito com Git no GitHub.
+
+
+
