@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS stock_system;
-CREATE DATABASE stock_system;
+--DROP DATABASE IF EXISTS stock_system;
+--CREATE DATABASE stock_system;
 
 -- Tabela de usuários
 CREATE TABLE users (
