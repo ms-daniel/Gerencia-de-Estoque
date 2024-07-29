@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UsersProfileController;
 use App\Http\Controllers\StoreController;
@@ -16,3 +18,5 @@ Route::apiResource('usersprofile', UsersProfileController::class);
 Route::apiResource('store', StoreController::class);
 Route::apiResource('supplier', SupplierController::class);
 Route::apiResource('item', ItemController::class);
+Route::apiResource('category', CategoryController::class);
+Route::apiResource('subcategory', SubcategoryController::class);
