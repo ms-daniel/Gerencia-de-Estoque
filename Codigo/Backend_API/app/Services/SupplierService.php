@@ -6,35 +6,35 @@ use App\Models\Supplier;
 
 class SupplierService implements ISupplierService
 {
-    protected $store;
+    protected $supplier;
 
-    public function __construct(Supplier $store)
+    public function __construct(Supplier $supplier)
     {
-        $this->store = $store;
+        $this->supplier = $supplier;
     }
 
     public function get($id)
     {
-        return $this->store->find($id);
+        return $this->supplier->find($id);
     }
     public function create(array $data)
     {
-        return $this->store->create($data);
+        return $this->supplier->create($data);
     }
     public function update($id, array $data)
     {
-        $userProfile = $this->store->find($id);
-        if ($userProfile) {
-            $userProfile->update($data);
-            return $userProfile;
+        $supplier = $this->supplier->find($id);
+        if ($supplier) {
+            $supplier->update($data);
+            return $supplier;
         }
         return null;
     }
     public function delete($id)
     {
-        $userProfile = $this->store->find($id);
-        if ($userProfile) {
-            $userProfile->delete();
+        $supplier = $this->supplier->find($id);
+        if ($supplier) {
+            $supplier->delete();
             return true;
         }
         return false;
@@ -42,6 +42,6 @@ class SupplierService implements ISupplierService
 
     public function getAll()
     {
-        return $this->store->all();
+        return $this->supplier->all();
     }
 }

@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Interfaces\IStoreService;
-use App\Http\Requests\StoreCreateRequest;
 
 class StoreController extends Controller
 {
@@ -20,16 +18,7 @@ class StoreController extends Controller
         'state' => 'required|string|max:255',
         'country' => 'required|string|max:255',
         'postal_code' => 'required|string|max:20',
-        'user_id' => 'required|integer|exists:users_profiles,id',  // Ajuste para o nome correto da tabela
-    ];
-
-    protected $updateRules = [
-        'name' => 'sometimes|required|string|max:255',
-        'street' => 'sometimes|string|max:255',
-        'city' => 'sometimes|string|max:255',
-        'state' => 'sometimes|required|string|max:255',
-        'country' => 'sometimes|required|string|max:255',
-        'postal_code' => 'sometimes|required|string|max:20',
+        'user_id' => 'required|integer|exists:users_profiles,id',
     ];
 
     public function __construct(IStoreService $storeService)
@@ -42,11 +31,11 @@ class StoreController extends Controller
      */
     public function index()
     {
-        $users = $this->storeService->getAll();
+        $stores = $this->storeService->getAll();
         return response()->json([
             'status' => true,
             'message' => 'Stores retrieved successfully',
-            'data' => $users
+            'data' => $stores
         ],200);
     }
 
@@ -81,9 +70,9 @@ class StoreController extends Controller
      */
     public function show($id)
     {
-        $user = $this->storeService->get($id);
+        $store = $this->storeService->get($id);
 
-        if(!$user) {
+        if(!$store) {
             return response()->json([
                 'status' => false,
                 'message' => 'Store not found',
@@ -93,7 +82,7 @@ class StoreController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Store found successfully',
-            'data' => $user
+            'data' => $store
         ], 200);
     }
 

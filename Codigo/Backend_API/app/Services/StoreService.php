@@ -23,18 +23,18 @@ class StoreService implements IStoreService
     }
     public function update($id, array $data)
     {
-        $userProfile = $this->store->find($id);
-        if ($userProfile) {
-            $userProfile->update($data);
-            return $userProfile;
+        $store = $this->store->find($id);
+        if ($store) {
+            $store->update($data);
+            return $store;
         }
         return null;
     }
     public function delete($id)
     {
-        $userProfile = $this->store->find($id);
-        if ($userProfile) {
-            $userProfile->delete();
+        $store = $this->store->find($id);
+        if ($store) {
+            $store->delete();
             return true;
         }
         return false;

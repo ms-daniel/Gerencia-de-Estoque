@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Interfaces\ISupplierService;
 
 class SupplierController extends Controller
@@ -29,11 +28,11 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $users = $this->supplierService->getAll();
+        $suppliers = $this->supplierService->getAll();
         return response()->json([
             'status' => true,
             'message' => 'Suppliers retrieved successfully',
-            'data' => $users
+            'data' => $suppliers
         ],200);
     }
 
@@ -68,9 +67,9 @@ class SupplierController extends Controller
      */
     public function show($id)
     {
-        $user = $this->supplierService->get($id);
+        $supplier = $this->supplierService->get($id);
 
-        if(!$user) {
+        if(!$supplier) {
             return response()->json([
                 'status' => false,
                 'message' => 'Supplier not found',
@@ -80,7 +79,7 @@ class SupplierController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Supplier found successfully',
-            'data' => $user
+            'data' => $supplier
         ], 200);
     }
 
