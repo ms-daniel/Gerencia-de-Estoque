@@ -6,17 +6,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Interfaces\IUsersProfileService;
 
 use App\Models\UsersProfile;
 
 class UsersProfileController extends Controller
 {
+    protected $usersProfileService;
+
+    public function __construct(IUsersProfileService $usersProfileService)
+    {
+        $this->usersProfileService = $usersProfileService;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = UsersProfile::all();
+        $users = $this->usersProfileService->getAll();
         return response()->json([
             'status' => true,
             'message' => 'Users retrieved successfully',
@@ -43,7 +51,9 @@ class UsersProfileController extends Controller
             ], 422);
         }
 
-        $user = UsersProfile::create($request->all());
+        $data = $request->all();
+
+        $user = $this->usersProfileService->create($data);
 
         return response()->json([
             'status' => true,
@@ -58,7 +68,7 @@ class UsersProfileController extends Controller
     public function show($id)
     {
         try {
-            $user = UsersProfile::findOrFail($id);
+            $user = $this->usersProfileService->get($id);
 
             return response()->json([
                 'status' => true,
@@ -78,20 +88,18 @@ class UsersProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try{
-            $user = UsersProfile::findOrFail($id);
-        } catch(ModelNotFoundException $e){
-            return response()->json([
-                'status' => false,
-                'message' => 'User not found',
-            ], 404);
-        }
-
         $validator = Validator::make($request->all(), [
-            'first_name' => 'string|max:255',
-            'last_name' => 'string|max:255',
-            'email' => 'string|email|unique:users_profiles,email,' . $id,
+            'first_name' => 'sometimes|required|string|max:255',
+            'last_name' => 'sometimes|required|string|max:255',
+            'email' => 'sometimes|required|string|email|unique:users_profiles,email,' . $id
         ]);
+
+        // validação condicional personalizada
+        $validator->after(function ($validator) use ($request) {
+            if (!$request->filled('first_name') && !$request->filled('last_name') && !$request->filled('email')) {
+                $validator->errors()->add('any_field', 'At least one field must be provided for the update.');
+            }
+        });
 
         if ($validator->fails()) {
             return response()->json([
@@ -101,24 +109,14 @@ class UsersProfileController extends Controller
             ], 422);
         }
 
-        if ($request->has('first_name')) {
-            $user->first_name = $request->input('first_name');
+        $data = $request->all();
+        $updatedUserProfile = $this->usersProfileService->update($id, $data);
+
+        if (!$updatedUserProfile) {
+            return response()->json(['message' => 'User profile not found'], 404);
         }
 
-        if ($request->has('last_name')) {
-            $user->last_name = $request->input('last_name');
-        }
-
-        if ($request->has('email')) {
-            $user->email = $request->input('email');
-        }
-
-        $user->save();
-
-        return response()->json([
-            'status' => true,
-            'message'=> 'User updated successfully'
-        ],200);
+        return $updatedUserProfile;
     }
 
     /**
@@ -126,20 +124,19 @@ class UsersProfileController extends Controller
      */
     public function destroy($id)
     {
-        try{
-            $user = UsersProfile::findOrFail($id);
-        } catch(ModelNotFoundException $e){
+        $deleted = $this->usersProfileService->delete($id);
+        if($deleted){
+            return response()->json([
+                'status' => true,
+                'message' => 'User deleted!'
+            ],204);
+        }
+        else{
             return response()->json([
                 'status' => false,
-                'message' => 'User not found'
-            ], 404);
+                'message' => 'Some error occurred'
+            ],500);
         }
 
-        $user->delete();
-
-        return response()->json([
-            'status' => true,
-            'message' => 'User deleted!'
-        ],204);
     }
 }
