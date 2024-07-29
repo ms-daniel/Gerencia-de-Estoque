@@ -2,14 +2,17 @@
 
 namespace App\Providers;
 
+use App\Interfaces\IItemService;
 use App\Interfaces\IStoreService;
 use App\Interfaces\IUsersProfileService;
 use App\Interfaces\ISupplierService;
 
+use App\Services\ItemService;
 use App\Services\UsersProfileService;
 use App\Services\StoreService;
 use App\Services\SupplierService;
 
+use App\Models\Item;
 use App\Models\Supplier;
 use App\Models\Store;
 use App\Models\UsersProfile;
@@ -31,10 +34,14 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(SupplierService::class, function($app){
             return new SupplierService($app->make(Supplier::class));
         });
+        $this->app->singleton(ItemService::class, function($app){
+            return new ItemService($app->make(Item::class));
+        });
 
         $this->app->bind(IUsersProfileService::class, UsersProfileService::class);
         $this->app->bind(IStoreService::class, StoreService::class);
         $this->app->bind(ISupplierService::class, SupplierService::class);
+        $this->app->bind(IItemService::class, ItemService::class);
     }
 
     /**
