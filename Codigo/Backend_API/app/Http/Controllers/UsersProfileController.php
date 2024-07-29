@@ -114,9 +114,12 @@ class UsersProfileController extends Controller
 
         if (!$updatedUserProfile) {
             return response()->json(['message' => 'User profile not found'], 404);
+        } else {
+            return response()->json([
+                'status' => true,
+                'message' => 'Updated!'
+            ], 200);
         }
-
-        return $updatedUserProfile;
     }
 
     /**
@@ -125,18 +128,17 @@ class UsersProfileController extends Controller
     public function destroy($id)
     {
         $deleted = $this->usersProfileService->delete($id);
-        if($deleted){
-            return response()->json([
-                'status' => true,
-                'message' => 'User deleted!'
-            ],204);
-        }
-        else{
+
+        if(!$deleted){
             return response()->json([
                 'status' => false,
                 'message' => 'Some error occurred'
             ],500);
         }
 
+        return response()->json([
+            'status' => true,
+            'message' => 'User deleted!'
+        ],200);
     }
 }
