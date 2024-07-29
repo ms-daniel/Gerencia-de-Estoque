@@ -90,7 +90,6 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        print_r('chegou aqui');
         $data = $request->all();
         $item = $this->itemService->update($id, $data);
 
