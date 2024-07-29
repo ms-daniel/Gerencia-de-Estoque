@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UsersProfileController;
 use App\Http\Controllers\StoreController;
@@ -14,3 +15,4 @@ Route::get('/user', function (Request $request) {
 Route::apiResource('usersprofile', UsersProfileController::class);
 Route::apiResource('store', StoreController::class);
 Route::apiResource('supplier', SupplierController::class);
+Route::apiResource('item', ItemController::class);
