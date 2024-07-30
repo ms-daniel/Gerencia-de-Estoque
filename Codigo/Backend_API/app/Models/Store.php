@@ -13,7 +13,7 @@ class Store extends Model
 
     public function userProfile(): HasOne
     {
-        return $this->hasOne(UsersProfile::class);
+        return $this->hasOne(UserProfile::class);
     }
 
     use HasFactory;

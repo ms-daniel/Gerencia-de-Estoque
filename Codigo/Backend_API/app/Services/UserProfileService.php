@@ -1,29 +1,29 @@
 <?php
 namespace App\Services;
 
-use App\Interfaces\IUsersProfileService;
-use App\Models\UsersProfile;
+use App\Interfaces\IUserProfileService;
+use App\Models\UserProfile;
 
-class UsersProfileService implements IUsersProfileService
+class UserProfileService implements IUserProfileService
 {
-    protected $usersProfile;
+    protected $userProfile;
 
-    public function __construct(UsersProfile $usersProfile)
+    public function __construct(UserProfile $userProfile)
     {
-        $this->usersProfile = $usersProfile;
+        $this->userProfile = $userProfile;
     }
 
     public function get($id)
     {
-        return $this->usersProfile->find($id);
+        return $this->userProfile->find($id);
     }
     public function create(array $data)
     {
-        return $this->usersProfile->create($data);
+        return $this->userProfile->create($data);
     }
     public function update($id, array $data)
     {
-        $userProfile = $this->usersProfile->find($id);
+        $userProfile = $this->userProfile->find($id);
         if ($userProfile) {
             $userProfile->update($data);
             return $userProfile;
@@ -32,7 +32,7 @@ class UsersProfileService implements IUsersProfileService
     }
     public function delete($id)
     {
-        $userProfile = $this->usersProfile->find($id);
+        $userProfile = $this->userProfile->find($id);
         if ($userProfile) {
             $userProfile->delete();
             return true;
@@ -42,6 +42,6 @@ class UsersProfileService implements IUsersProfileService
 
     public function getAll()
     {
-        return $this->usersProfile->all();
+        return $this->userProfile->all();
     }
 }

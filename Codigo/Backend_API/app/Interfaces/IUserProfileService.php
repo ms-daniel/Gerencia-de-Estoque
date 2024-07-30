@@ -1,7 +1,7 @@
 <?php
 namespace App\Interfaces;
 
-interface IUsersProfileService
+interface IUserProfileService
 {
     public function get($id);
     public function create(array $data);

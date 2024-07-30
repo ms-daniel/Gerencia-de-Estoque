@@ -6,17 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Interfaces\IUsersProfileService;
+use App\Interfaces\IUserProfileService;
 
-use App\Models\UsersProfile;
-
-class UsersProfileController extends Controller
+class UserProfileController extends Controller
 {
-    protected $usersProfileService;
+    protected $userProfileService;
 
-    public function __construct(IUsersProfileService $usersProfileService)
+    public function __construct(IUserProfileService $userProfileService)
     {
-        $this->usersProfileService = $usersProfileService;
+        $this->userProfileService = $userProfileService;
     }
 
     /**
@@ -24,11 +22,11 @@ class UsersProfileController extends Controller
      */
     public function index()
     {
-        $users = $this->usersProfileService->getAll();
+        $user = $this->userProfileService->getAll();
         return response()->json([
             'status' => true,
             'message' => 'Users retrieved successfully',
-            'data' => $users
+            'data' => $user
         ],200);
     }
 
@@ -40,7 +38,7 @@ class UsersProfileController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:users_profiles|max:255',
+            'email' => 'required|string|email|unique:user_profiles|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -53,7 +51,7 @@ class UsersProfileController extends Controller
 
         $data = $request->all();
 
-        $user = $this->usersProfileService->create($data);
+        $user = $this->userProfileService->create($data);
 
         return response()->json([
             'status' => true,
@@ -68,7 +66,7 @@ class UsersProfileController extends Controller
     public function show($id)
     {
         try {
-            $user = $this->usersProfileService->get($id);
+            $user = $this->userProfileService->get($id);
 
             return response()->json([
                 'status' => true,
@@ -91,7 +89,7 @@ class UsersProfileController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'sometimes|required|string|max:255',
             'last_name' => 'sometimes|required|string|max:255',
-            'email' => 'sometimes|required|string|email|unique:users_profiles,email,' . $id
+            'email' => 'sometimes|required|string|email|unique:user_profiles,email,' . $id
         ]);
 
         // validação condicional personalizada
@@ -110,7 +108,7 @@ class UsersProfileController extends Controller
         }
 
         $data = $request->all();
-        $updatedUserProfile = $this->usersProfileService->update($id, $data);
+        $updatedUserProfile = $this->userProfileService->update($id, $data);
 
         if (!$updatedUserProfile) {
             return response()->json(['message' => 'User profile not found'], 404);
@@ -127,7 +125,7 @@ class UsersProfileController extends Controller
      */
     public function destroy($id)
     {
-        $deleted = $this->usersProfileService->delete($id);
+        $deleted = $this->userProfileService->delete($id);
 
         if(!$deleted){
             return response()->json([
