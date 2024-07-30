@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StockMovements extends Model
 {
+    protected $fillable = ['stock_id', 'movement_type', 'quantity'];
+
     use HasFactory;
 }
