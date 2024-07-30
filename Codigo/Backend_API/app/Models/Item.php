@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Item extends Model
 {
-    protected $fillable = ['code', 'name', 'description', 'supplier_id', 'category_id', 'store_id'];
+    protected $fillable = ['code', 'name', 'description', 'category_id', 'store_id'];
 
     public function stocks(): HasMany
     {
@@ -19,6 +19,11 @@ class Item extends Model
     public function itemSubcategories(): HasMany
     {
         return $this->HasMany(ItemSubcategory::class);
+    }
+
+    public function itemSuppliers(): HasMany
+    {
+        return $this->HasMany(ItemSupplier::class);
     }
 
     public function category(): HasOne
