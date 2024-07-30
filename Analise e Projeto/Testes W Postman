@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "826586f0-6704-418c-9363-980a54ffdcaf",
+		"name": "Gerenciamento de Estoque",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "37260861"
+	},
+	"item": [
+		{
+			"name": "Stores",
+			"item": [
+				{
+					"name": "Get Stores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/store"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Store",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Store Name 3\",\r\n  \"street\": \"789 Oak St\",\r\n  \"city\": \"City C\",\r\n  \"state\": \"State C\",\r\n  \"country\": \"Country C\",\r\n  \"postal_code\": \"10112\",\r\n  \"user_id\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/store"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Store",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Store Name 3\",\r\n  \"street\": \"789 Oak St\",\r\n  \"city\": \"City C\",\r\n  \"state\": \"State C\",\r\n  \"country\": \"Country C\",\r\n  \"postal_code\": \"10112\",\r\n  \"user_id\": 4\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/store/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Store",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8000/api/store/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Suppliers",
+			"item": [
+				{
+					"name": "Get Suppliers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/supplier"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Supplier",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 1,\r\n    \"name\": \"Bob Brown\",\r\n    \"phone\": \"456-789-0123\",\r\n    \"email\": \"bob.brown@example.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/supplier"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Supplier",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"John Doe updated\",\r\n    \"phone\": \"123-456-7890\",\r\n    \"email\": \"john.doe@example.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/supplier/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Supplier",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8000/api/supplier/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Get Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/category"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Teste insert",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/api/category"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "updated teste",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/api/category/4"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8000/api/category/4"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subcategory",
+			"item": [
+				{
+					"name": "Get SubCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/subcategory"
+					},
+					"response": []
+				},
+				{
+					"name": "Create SubCategory",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Teste insert",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/api/subcategory"
+					},
+					"response": []
+				},
+				{
+					"name": "Update SubCategory",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "updated teste",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/api/subcategory/4"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete SubCategory",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8000/api/subcategory/4"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "Get Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/item"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"ABC123\",\r\n    \"name\": \"Sample Item\",\r\n    \"description\": \"This is a sample item description.\",\r\n    \"supplier_id\": 1,\r\n    \"category_id\": 1,\r\n    \"store_id\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/item"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Sample Item updated\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/item/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8000/api/item/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserProfile",
+			"item": [
+				{
+					"name": "Get Users Profiles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/usersprofile"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
