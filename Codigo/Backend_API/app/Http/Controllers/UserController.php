@@ -6,15 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Interfaces\IUserProfileService;
+use App\Interfaces\IUserService;
+use Exception;
 
-class UserProfileController extends Controller
+class UserController extends Controller
 {
-    protected $userProfileService;
+    protected $userService;
 
-    public function __construct(IUserProfileService $userProfileService)
+    public function __construct(IUserService $userService)
     {
-        $this->userProfileService = $userProfileService;
+        $this->userService = $userService;
     }
 
     /**
@@ -22,7 +23,7 @@ class UserProfileController extends Controller
      */
     public function index()
     {
-        $user = $this->userProfileService->getAll();
+        $user = $this->userService->getAll();
         return response()->json([
             'status' => true,
             'message' => 'Users retrieved successfully',
@@ -35,7 +36,7 @@ class UserProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        /*$validator = Validator::make($request->all(), [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|unique:user_profiles|max:255',
@@ -51,13 +52,12 @@ class UserProfileController extends Controller
 
         $data = $request->all();
 
-        $user = $this->userProfileService->create($data);
+        $user = $this->userProfileService->create($data);*/
 
         return response()->json([
             'status' => true,
-            'message' => 'User created successfully',
-            'data' => $user
-        ], 201);
+            'message' => 'This method is disable',
+        ], 418);
     }
 
     /**
@@ -66,7 +66,7 @@ class UserProfileController extends Controller
     public function show($id)
     {
         try {
-            $user = $this->userProfileService->get($id);
+            $user = $this->userService->get($id);
 
             return response()->json([
                 'status' => true,
@@ -108,10 +108,13 @@ class UserProfileController extends Controller
         }
 
         $data = $request->all();
-        $updatedUserProfile = $this->userProfileService->update($id, $data);
+        $updatedUserProfile = $this->userService->update($id, $data);
 
         if (!$updatedUserProfile) {
-            return response()->json(['message' => 'User profile not found'], 404);
+            return response()->json([
+                'status' => false,
+                'message' => 'User profile not found'
+            ], 404);
         } else {
             return response()->json([
                 'status' => true,
@@ -125,7 +128,7 @@ class UserProfileController extends Controller
      */
     public function destroy($id)
     {
-        $deleted = $this->userProfileService->delete($id);
+        $deleted = $this->userService->delete($id);
 
         if(!$deleted){
             return response()->json([
@@ -138,5 +141,73 @@ class UserProfileController extends Controller
             'status' => true,
             'message' => 'User deleted!'
         ],200);
+    }
+
+    public function getTokens(Request $request)
+    {
+        $tokens = $request->user()->tokens;
+
+        if (!$tokens) {
+            return response()->json([
+                'status' => false,
+                'message' => 'User has no tokens',
+            ], 401);
+        }
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Tokens found!',
+            'data' => $tokens,
+        ], 200);
+    }
+
+    public function clearTokens(Request $request)
+    {
+        if($this->userService->deleteAllTokens($request->user()->id)){
+            return response()->json([
+                'status' => true,
+                'message' => 'All tokens deleted! You\'re log out',
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Tokens not deleted. Maybe has no tokens.',
+            ], 401);
+        }
+
+    }
+
+    public function deleteTokens(Request $request)
+    {
+        $ids = $request->input('ids');
+        $user = $request->user();
+
+        if($ids){
+            try {
+                $count = $this->userService->deleteTokens($user, $ids);
+
+                if ($count > 0) {
+                    return response()->json([
+                        'status' => true,
+                        'message' => 'Tokens deleted successfully.',
+                    ], 200);
+                } else {
+                    return response()->json([
+                        'status' => false,
+                        'message' => 'No tokens found for the provided IDs.',
+                    ], 404);
+                }
+            } catch (Exception $e) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Error: ' . $e->getMessage(),
+                ], 500);
+            }
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'No token IDs provided.',
+            ], 400);
+        }
     }
 }

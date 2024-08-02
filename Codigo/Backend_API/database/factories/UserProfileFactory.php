@@ -3,10 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\UserProfile;
+use App\Models\User;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UserProfile>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
 class UserProfileFactory extends Factory
 {
@@ -15,7 +15,7 @@ class UserProfileFactory extends Factory
      *
      * @var string
      */
-    protected $model = UserProfile::class;
+    protected $model = User::class;
 
     /**
      * Define the model's default state.
