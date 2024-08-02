@@ -11,9 +11,9 @@ class Store extends Model
 {
     protected $fillable = ['name', 'street', 'city', 'state', 'country', 'postal_code', 'user_id'];
 
-    public function userProfile(): HasOne
+    public function user(): HasOne
     {
-        return $this->hasOne(UserProfile::class);
+        return $this->hasOne(User::class);
     }
 
     use HasFactory;

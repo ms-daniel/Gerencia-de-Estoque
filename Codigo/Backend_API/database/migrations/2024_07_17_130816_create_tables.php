@@ -11,12 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_profiles', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->enum('role', ['admin', 'user'])->default('user');
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
+        });
+
+        Schema::create('password_reset_tokens', function (Blueprint $table) {
+            $table->string('email')->primary();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
 
         Schema::create('stores', function (Blueprint $table) {
@@ -29,7 +39,7 @@ return new class extends Migration
             $table->string('postal_code')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('user_profiles')->onDelete('cascade');;
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
         });
 
         Schema::create('suppliers', function (Blueprint $table) {
@@ -39,7 +49,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('user_profiles')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::create('categories', function (Blueprint $table) {
@@ -119,6 +129,7 @@ return new class extends Migration
         Schema::dropIfExists('categories');
         Schema::dropIfExists('suppliers');
         Schema::dropIfExists('stores');
-        Schema::dropIfExists('user_profiles');
+        Schema::dropIfExists('users');
+        Schema::dropIfExists('password_reset_tokens');
     }
 };
