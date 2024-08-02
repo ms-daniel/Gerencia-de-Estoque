@@ -130,8 +130,20 @@
 				{
 					"name": "Get Categories",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "1|WzSWiCDlGGw3ZtB2D3cDpbMK7G3HQMPD8NmSPYOo13a243a6"
+							}
+						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": "http://localhost:8000/api/category"
 					},
 					"response": []
@@ -139,14 +151,26 @@
 				{
 					"name": "Create Category",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "1|WzSWiCDlGGw3ZtB2D3cDpbMK7G3HQMPD8NmSPYOo13a243a6"
+							}
+						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Teste insert",
+									"value": "Teste insert3",
 									"type": "text"
 								}
 							]
@@ -306,20 +330,6 @@
 			]
 		},
 		{
-			"name": "UserProfile",
-			"item": [
-				{
-					"name": "Get Users Profiles",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": "http://localhost:8000/api/usersprofile"
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Stocks",
 			"item": [
 				{
@@ -373,6 +383,178 @@
 						"method": "DELETE",
 						"header": [],
 						"url": "http://localhost:8000/api/stock/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "18|0j4WKVrq2YnkAOYpgQAW0mkfkb1ybLP2FBiX3w1qb406e3bf"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8000/api/user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Carlos Daniel\",\r\n    \"last_name\": \"de Jesus\",\r\n    \"email\": \"ms_danniel2@outlook.com\",\r\n    \"password\": \"password\",\r\n    \"password_confirmation\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|KMrv7w7eOlAeZ3IkLuVa36yB1NBnevMl76DwnSkm326e1ef0"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8000/api/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ms_danniel@outlook.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Tokens",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "18|0j4WKVrq2YnkAOYpgQAW0mkfkb1ybLP2FBiX3w1qb406e3bf"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8000/api/tokens"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Tokens",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "16|DFKXIQS7mGGvHg58rkktipwFzXYdQ9ywWNzJOOPZ395a3363"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8000/api/tokens/all"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Some Tokens",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "17|Pk5tDq9BmVnJkaUk6nAPYuTUt97IHRVDYaZ3MaHh62cd363f"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ids\": [1, 2, 3]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/tokens"
 					},
 					"response": []
 				}
