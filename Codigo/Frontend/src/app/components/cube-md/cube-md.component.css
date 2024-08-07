@@ -30,21 +30,21 @@
 
 @keyframes moveX {
   from {
-    left: 0;
+    left: calc(100vw - var(--cube-size));
     transform: rotateX(-30deg) rotateY(-45deg);
   }
   to {
-    left: calc(100vw - var(--cube-size));
+    left: 0;
     transform: rotateX(-30deg) rotateY(315deg);
   }
 }
 @keyframes moveY {
   from {
-    top: 0;
+    top: calc(100vh - var(--cube-size));
     transform: rotateX(0deg) rotateY(-45deg);
   }
   to {
-    top: calc(100vh - var(--cube-size));
+    top: 0;
     transform: rotateX(360deg) rotateY(-45deg);
   }
 }

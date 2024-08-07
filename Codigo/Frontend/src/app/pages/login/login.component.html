@@ -1,39 +1,45 @@
-<div class="flex items-center justify-center min-h-screen bg-gray-100 relative">
+<div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 relative background">
   <app-cube-sm [size]="'5em'"></app-cube-sm>
-  <!-- Cubos girando -->
+  <app-cube-md [size]="'3em'"></app-cube-md>
 
   <!-- Formulário de login -->
-  <div class="bg-white p-8 rounded shadow-md w-full max-w-md relative z-10">
-    <h2 class="text-2xl font-bold mb-0 text-left">Login</h2>
-    <div class="mb-6">
-      <span>Doesn't have an account yet? </span>
-      <a href="#" class="text-blue-600 visited:text-purple-600 active:bg-blue-600 active:font-bold">Sign Up</a>
+  <div class="bg-white rounded-lg shadow-md w-full max-w-5xl relative z-10 grid grid-cols-7 divide-x">
+    <div class="md:col-span-4 col-span-8 p-4 content-center">
+      <h2 class="text-4xl font-bold mb-4 text-center">Login</h2>
+      <form>
+        <div class="relative mt-2 w-full">
+          <input type="text" id="email" value="" class="border-1 peer block w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-2.5 pb-2.5 pt-4 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0" placeholder=" " />
+          <label for="email" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-75 transform cursor-text select-none bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-blue-600"> Email </label>
+        </div>
+        <div class="relative mt-2 w-full mb-2">
+          <input type="text" id="password" class="border-1 peer block w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-2.5 pb-2.5 pt-4 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0" placeholder=" " />
+          <label for="password" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-75 transform cursor-text select-none bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-blue-600"> Password</label>
+        </div>
+        <div class="mb-4 text-right">
+          <a href="#" class="text-sm text-blue-600 active:font-bold hover:underline">Forgot Password?</a>
+        </div>
+        <button
+          type="submit"
+          class="w-full rounded-lg bg-blue-600 py-3 font-bold text-white"
+        >
+          Login
+        </button>
+      </form>
+      <div class="mb-6 text-center">
+        <span>Doesn't have an account yet? </span>
+        <a href="#" class="text-blue-600 active:bg-blue-900 active:font-bold hover:underline">Sign Up</a>
+      </div>
     </div>
-    <form>
-      <div class="mb-4">
-        <label for="email" class="block text-gray-700">Email:</label>
-        <input
-          type="email"
-          id="email"
-          class="w-full px-3 py-2 border rounded"
-          placeholder="your@example.com"
-        />
-      </div>
-      <div class="mb-6">
-        <label for="password" class="block text-gray-700">Senha:</label>
-        <input
-          type="password"
-          id="password"
-          class="w-full px-3 py-2 border rounded"
-          placeholder="Enter password"
-        />
-      </div>
-      <button
-        type="submit"
-        class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-      >
-        Entrar
-      </button>
-    </form>
+
+    <div class="col-span-3 items-center bg-sky-400 rounded-r-lg hidden md:block">
+      <img src="assets/images/workers.png" class="w-full object-cover" alt="">
+    </div>
   </div>
+
+  <a class="text-end absolute bottom-2 text-blue-600 active:bg-blue-900 active:font-bold hover:underline" target="_blank" href="https://github.com/ms-daniel">
+      <i class="fa-brands fa-github text-xl text-black"></i>
+      <span class="text-lg">
+        /ms-daniel
+      </span>
+  </a>
 </div>
