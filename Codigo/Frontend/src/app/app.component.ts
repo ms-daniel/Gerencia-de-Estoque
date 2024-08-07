@@ -10,5 +10,4 @@ import { LoginComponent } from './pages/login/login.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'StockFront';
 }
