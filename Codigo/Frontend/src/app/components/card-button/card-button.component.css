@@ -1,0 +1,14 @@
+.background {
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.background:hover {
+  background-color: white;
+  box-shadow: rgb(22, 121, 171) 0px 2px 8px 0px;
+  transition: 0.5s ease-in-out;
+}
+
+.number-color {
+  color: rgb(82, 92, 235);
+}
