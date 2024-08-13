@@ -1,13 +1,13 @@
-<a class="relative flex h-32 items-center rounded background p-2 pb-1 text-gray-400 border-b-4 border-indigo-500 "
+<a class="relative flex h-32 items-center rounded p-2 pb-1 text-teal-400 border-b-4 border-teal-500 dark:bg-gray-800 dark:text-white"
   [routerLink]="link"
   routerLinkActive="active"
 >
   <div class="">
-    <span class="material-symbols-outlined text-8xl">{{ icon }}</span>
+    <span class="material-symbols-outlined text-8xl dark:text-teal-300">{{ icon }}</span>
     <!-- <span class="text-xl align-top font-mono">Iventory</span> -->
   </div>
   <div class="text-center flex flex-col w-full">
-    <span class="text-6xl number-color">{{ total }}</span>
+    <span class="text-6xl dark:text-blue-600">{{ total }}</span>
     <span class="ms-2">{{ legend }}</span>
   </div>
 </a>
