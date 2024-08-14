@@ -1,5 +1,5 @@
 <div class="p-4 rounded-lg mt-14">
-  <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4 mb-4">
+  <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4 mb-4">
     <app-card-button icon="inventory" legend="Registered Items" link="/home" [total]="99"></app-card-button>
     <app-card-button icon="store" legend="My Stores" link="/home" [total]="2"></app-card-button>
     <app-card-button icon="groups_2" legend="Suppliers" link="/home" [total]="53"></app-card-button>
@@ -12,7 +12,7 @@
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
     <div class="flex flex-col items-center justify-center rounded bg-gray-50 min-h-28 h dark:bg-gray-800 p-3">
       <h1 class="dark:text-white text-2xl font-bold">Last Sold</h1>
-      <div class="p-4  w-full">
+      <div class="md:p-4 my-4 md:my-0 p-0 w-full">
         <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg">
           <thead>
             <tr>
@@ -50,7 +50,7 @@
     </div>
     <div class="flex flex-col items-center justify-center rounded bg-gray-50 min-h-28 h dark:bg-gray-800 p-3">
       <h1 class="dark:text-white text-2xl font-bold">Last Purchased</h1>
-      <div class="p-4  w-full">
+      <div class="md:p-4 p-0 my-4 md:my-0 w-full">
         <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg">
           <thead>
             <tr>
