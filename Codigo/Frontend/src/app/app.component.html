@@ -1,5 +1,12 @@
-<app-navbar/>
-<app-base-layout>
-    <router-outlet></router-outlet>
-</app-base-layout>
-<app-footer/>
+<ng-container *ngIf="!isLoginPage()">
+  <app-navbar></app-navbar>
+  <app-base-layout>
+      <router-outlet></router-outlet>
+  </app-base-layout>
+  <app-footer></app-footer>
+</ng-container>
+
+<!-- Carrega apenas o router-outlet diretamente para a página de login -->
+<ng-container *ngIf="isLoginPage()">
+  <router-outlet></router-outlet>
+</ng-container>
