@@ -13,7 +13,7 @@ export class SalesGraphComponent implements OnInit{
     const options = {
       chart: {
         height: "100%",
-        width: "100%",
+        maxWidth: "100%",
         type: "area",
         fontFamily: "Inter, sans-serif",
         dropShadow: {
@@ -22,6 +22,10 @@ export class SalesGraphComponent implements OnInit{
         toolbar: {
           show: false,
         },
+        background: "transparent", // Define o fundo como transparente
+      },
+      theme: {
+        mode: 'dark', // Configura o tema para escuro
       },
       tooltip: {
         enabled: true,
