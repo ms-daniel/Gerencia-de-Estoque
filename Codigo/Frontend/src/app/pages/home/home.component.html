@@ -1,5 +1,5 @@
-<div class="p-4 rounded-lg mt-14">
-  <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4 mb-4">
+<div class="p-4 rounded-lg">
+  <div class="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-4 mb-4">
     <app-card-button icon="inventory" legend="Registered Items" link="/home" [total]="99"></app-card-button>
     <app-card-button icon="store" legend="My Stores" link="/home" [total]="2"></app-card-button>
     <app-card-button icon="groups_2" legend="Suppliers" link="/home" [total]="53"></app-card-button>
@@ -10,81 +10,22 @@
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
-    <div class="flex flex-col items-center justify-center rounded bg-gray-50 min-h-28 h dark:bg-gray-800 p-3">
-      <h1 class="dark:text-white text-2xl font-bold">Last Sold</h1>
-      <div class="md:p-4 my-4 md:my-0 p-0 w-full">
-        <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg">
-          <thead>
-            <tr>
-              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
-                Name
-              </th>
-              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
-                Quantity
-              </th>
-              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
-                Last Sale
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">Product A</td>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">50</td>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">2024-08-13</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">Product B</td>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">30</td>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">2024-08-12</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">Product C</td>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">75</td>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">2024-08-11</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <button type="button" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-1 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">See All</button>
-    </div>
-    <div class="flex flex-col items-center justify-center rounded bg-gray-50 min-h-28 h dark:bg-gray-800 p-3">
-      <h1 class="dark:text-white text-2xl font-bold">Last Purchased</h1>
-      <div class="md:p-4 p-0 my-4 md:my-0 w-full">
-        <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg">
-          <thead>
-            <tr>
-              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
-                Name
-              </th>
-              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
-                Quantity
-              </th>
-              <th class="px-6 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
-                Date
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">Product A</td>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">50</td>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">2024-08-13</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">Product B</td>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">30</td>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">2024-08-12</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">Product C</td>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">75</td>
-              <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">2024-08-11</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <button type="button" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-1 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">See All</button>
-    </div>
+    <app-simple-table
+      title="Last Sold"
+      [data]="[
+        { name: 'Product A', quantity: 50, date: '2024-08-13' },
+        { name: 'Product B', quantity: 30, date: '2024-08-12' },
+        { name: 'Product C', quantity: 75, date: '2024-08-11' }
+      ]">
+    </app-simple-table>
+
+    <app-simple-table
+      title="Last Purchased"
+      [data]="[
+        { name: 'Product A', quantity: 50, date: '2024-08-13' },
+        { name: 'Product B', quantity: 30, date: '2024-08-12' },
+        { name: 'Product C', quantity: 75, date: '2024-08-11' }
+      ]">
+    </app-simple-table>
   </div>
  </div>
