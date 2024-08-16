@@ -1,0 +1,25 @@
+
+<div class="my-4 md:my-0 w-full relative overflow-x-auto">
+  <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg">
+    <thead>
+      <tr>
+        <th *ngFor="let item of columns" scope="col" class="md:px-6 px-4 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
+          {{item}}
+        </th>
+        <th class="md:px-6 px-4 py-3 text-left text-sm font-medium text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data" class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+        <td *ngFor="let column of columns" class="md:px-6 px-4 md:py-4 py-2 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">
+          {{ item[column] }}
+        </td>
+        <td class="md:px-6 px-4 md:py-4 py-2 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">
+          Edit
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
