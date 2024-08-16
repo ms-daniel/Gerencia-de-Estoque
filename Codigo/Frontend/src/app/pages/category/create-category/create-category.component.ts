@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './create-category.component.css'
 })
 export class CreateCategoryComponent {
-  category: Category = {id: 0, name: ''};
+  category: Category = {Id: 0, Name: ''};
 
   seeCategoery(): void {
     console.log(this.category);
