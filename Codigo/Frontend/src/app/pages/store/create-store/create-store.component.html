@@ -1,0 +1,44 @@
+<div class="text-center mt-4">
+  <h1 class="text-3xl">Create a Store</h1>
+  <form class="max-w-sm mx-auto my-4" (ngSubmit)="seeStore()">
+    <div class="mb-5">
+      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">Name</label>
+      <input type="text" id="name" name="Name" [(ngModel)]="store.name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Store name" required />
+    </div>
+
+    <div class="mb-5">
+      <label for="street" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">Street</label>
+      <input type="text" id="street" name="Street" [(ngModel)]="store.street" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Street address" required />
+    </div>
+
+    <div class="mb-5">
+      <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">City</label>
+      <input type="text" id="city" name="City" [(ngModel)]="store.city" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="City name" required />
+    </div>
+
+    <div class="mb-5">
+      <label for="state" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">State</label>
+      <input type="text" id="state" name="State" [(ngModel)]="store.state" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="State name" required />
+    </div>
+
+    <div class="mb-5">
+      <label for="country" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">Country</label>
+      <input type="text" id="country" name="Country" [(ngModel)]="store.country" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Country name" required />
+    </div>
+
+    <div class="mb-5">
+      <label for="postal_code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">Postal Code</label>
+      <input type="text" id="postal_code" name="Postal Code" [(ngModel)]="store.postal_code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Postal code" />
+    </div>
+
+    <div class="mb-5">
+      <label for="user_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-left">User ID</label>
+      <input type="number" id="user_id" name="User ID" [(ngModel)]="store.user_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="User ID" required />
+    </div>
+
+    <div>
+      <a routerLink="/store" routerLinkActive="active" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Back to List</a>
+      <button type="submit" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">Create</button>
+    </div>
+  </form>
+</div>
