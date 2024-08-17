@@ -16,8 +16,17 @@
         <td *ngFor="let column of columns" class="md:px-6 px-4 md:py-4 py-2 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">
           {{ item[column] }}
         </td>
-        <td class="md:px-6 px-4 md:py-4 py-2 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">
-          Edit
+        <td class="md:px-4 px-2 md:py-4 py-2 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-600">
+          <a routerLink="" class="text-white font-medium rounded-lg text-sm text-center">
+            <span class="material-symbols-outlined">
+              edit
+            </span>
+          </a>
+          <a routerLink="" class="text-red-600 font-medium rounded-lg text-sm text-center md:mx-2">
+            <span class="material-symbols-outlined">
+              delete_forever
+            </span>
+          </a>
         </td>
       </tr>
     </tbody>
