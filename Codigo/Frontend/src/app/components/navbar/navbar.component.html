@@ -70,13 +70,15 @@
         </a>
       </li>
       <li>
-        <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-category" data-collapse-toggle="dropdown-category">
-          <span class="material-symbols-outlined">category</span>
-          <span class="flex-1 ms-3 whitespace-nowrap text-left">Categories</span>
-          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-          </svg>
-        </button>
+        <div class="flex items-center justify-between w-full p-0 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600">
+          <a routerLink="/category" routerLinkActive="active" class="text-left p-2 w-full transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600">
+            <span class="material-symbols-outlined align-top">category</span>
+            <span class="ms-3 whitespace-nowrap">Categories</span>
+          </a>
+          <button type="button" class="text-right p-2 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-category" data-collapse-toggle="dropdown-category">
+            <span class="material-symbols-outlined align-middle">keyboard_arrow_down</span>
+          </button>
+        </div>
         <ul id="dropdown-category" class="hidden py-1 text-base">
               <li class="flex">
                   <a routerLink="category" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
@@ -97,13 +99,15 @@
         </ul>
       </li>
       <li>
-        <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-subcategory" data-collapse-toggle="dropdown-subcategory">
-          <span class="material-symbols-outlined">category_search</span>
-          <span class="flex-1 ms-3 whitespace-nowrap text-left">Subcategories</span>
-          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-          </svg>
-        </button>
+        <div class="flex items-center justify-between w-full p-0 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600">
+          <a routerLink="/subcategory" routerLinkActive="active" class="text-left p-2 w-full transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600">
+            <span class="material-symbols-outlined align-top">category_search</span>
+            <span class="ms-3 whitespace-nowrap">Subcategories</span>
+          </a>
+          <button type="button" class="text-right p-2 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-subcategory" data-collapse-toggle="dropdown-subcategory">
+            <span class="material-symbols-outlined align-middle">keyboard_arrow_down</span>
+          </button>
+        </div>
         <ul id="dropdown-subcategory" class="hidden py-1 text-base">
           <li class="flex">
             <a routerLink="subcategory" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
