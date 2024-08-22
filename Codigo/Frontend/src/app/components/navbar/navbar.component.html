@@ -58,16 +58,39 @@
         </a>
       </li>
       <li>
-        <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+        <a routerLink="/item" routerLinkActive="active" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
           <span class="material-symbols-outlined">inventory</span>
           <span class="flex-1 ms-3 whitespace-nowrap">Inventory/Products</span>
         </a>
       </li>
       <li>
-        <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-          <span class="material-symbols-outlined">groups_2</span>
-          <span class="flex-1 ms-3 whitespace-nowrap">Suppliers</span>
-        </a>
+        <div class="flex items-center justify-between w-full p-0 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600">
+          <a routerLink="/supplier" routerLinkActive="active" class="text-left p-2 w-full transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600">
+            <span class="material-symbols-outlined align-top">groups_2</span>
+            <span class="ms-3 whitespace-nowrap">Suppliers</span>
+          </a>
+          <button type="button" class="text-right p-2 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-Suppliers" data-collapse-toggle="dropdown-Suppliers">
+            <span class="material-symbols-outlined align-middle">keyboard_arrow_down</span>
+          </button>
+        </div>
+        <ul id="dropdown-Suppliers" class="hidden py-1 text-base">
+              <li class="flex">
+                  <a routerLink="/supplier" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                    <span class="material-symbols-outlined me-2">
+                      format_list_bulleted
+                    </span>
+                    List
+                  </a>
+              </li>
+              <li>
+                  <a routerLink="/supplier/create" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                    <span class="material-symbols-outlined me-2">
+                      add
+                    </span>
+                    Create
+                  </a>
+              </li>
+        </ul>
       </li>
       <li>
         <div class="flex items-center justify-between w-full p-0 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600">
