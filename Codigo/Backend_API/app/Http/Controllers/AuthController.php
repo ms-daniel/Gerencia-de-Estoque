@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -28,14 +29,17 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $token = $this->authService->register($request->all());
+        $user = $this->authService->register($request->all());
+
+
+        $cookie = cookie('auth_token', $user, 60*24, null, null, true, true);
+
+        Auth::login($user);
 
         return response()->json([
             'status' => true,
-            'message' => 'Registered!',
-            'access_token' => $token,
-            'token_type' => 'Bearer'
-        ], 200);
+            'message' => 'Registered and logged in successfully!',
+        ], 200)->cookie($cookie);
     }
 
     public function login(Request $request)
@@ -49,20 +53,32 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $token = $this->authService->login($request->all());
+        $credentials = $request->only('email', 'password');
+
+        if (!Auth::attempt($credentials)) {
+            return response()->json(['error' => 'Invalid credentials'], 401);
+        }
+
+        $user = Auth::user();
+        $token = $user->createToken('authToken')->plainTextToken;
+
+        $cookie = cookie('auth_token', $token, 60*24, null, null, true, true);
 
         return response()->json([
             'status' => true,
-            'message' => 'Login sucessfuly!',
-            'access_token' => $token,
-            'token_type' => 'Bearer'
-        ], 200);
+            'message' => 'Login successfully!',
+            'cookie' => $cookie->getValue()
+        ], 200)
+        ->withCookie($cookie);
     }
+
 
     public function logout(Request $request)
     {
-        $request->user()->tokens()->delete();
+        Auth::user()->tokens()->delete();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        $cookie = cookie()->forget('auth_token');
+
+        return response()->json(['message' => 'Logout successful'])->cookie($cookie);
     }
 }
