@@ -1,18 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Login } from '../_models/login.model';
+import { Login } from '../_models/login';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  private apiUrl = 'localhost:8000/api';
+  private apiUrl = 'http://localhost:8000/api';
 
   constructor(private http: HttpClient) {}
 
   login(data: Login) {
-    return this.http.post<Login>(this.apiUrl + '/login', data);
+    return this.http.post(this.apiUrl + '/login', data, {
+      withCredentials: true,
+      observe: 'response'
+    });
+  }
+
+  logout() {
+    return this.http.post(`${this.apiUrl}/logout`, {}, {
+       withCredentials: true,
+       observe: 'response',
+      });
+  }
+
+  getUsers() {
+    this.http.get(`${this.apiUrl}/item`, { withCredentials: true })
+      .subscribe(response => {
+        return response;
+      });
   }
 }
