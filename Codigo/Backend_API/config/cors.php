@@ -5,14 +5,13 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:4200'], // Substitua pelo domínio do Angular
+    'allowed_origins' => ['http://localhost:4200'],
 
-    'allowed_headers' => ['Content-Type', 'X-Requested-With', 'Authorization', 'X-CSRF-TOKEN', 'Accept'],
+    'allowed_headers' => ['*'],
 
-    'exposed_headers' => [],
+    'exposed_headers' => ['Authorization', 'Set-Cookie', 'Custom-Header'],
 
     'max_age' => 0,
 
     'supports_credentials' => true,
-
 ];

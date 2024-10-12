@@ -32,14 +32,15 @@ class AuthController extends Controller
         $user = $this->authService->register($request->all());
 
 
-        $cookie = cookie('auth_token', $user, 60*24, null, null, true, true);
+        $cookie = cookie('auth_token', $user, 60*24, null, null, false, true, false, 'none');
 
         Auth::login($user);
 
         return response()->json([
             'status' => true,
             'message' => 'Registered and logged in successfully!',
-        ], 200)->cookie($cookie);
+        ], 200)
+        ->withCookie($cookie);
     }
 
     public function login(Request $request)
@@ -62,12 +63,11 @@ class AuthController extends Controller
         $user = Auth::user();
         $token = $user->createToken('authToken')->plainTextToken;
 
-        $cookie = cookie('auth_token', $token, 60*24, null, null, true, true);
+        $cookie = cookie('auth_token', $token, 60*24, null, null, true, true, false, 'none');
 
         return response()->json([
             'status' => true,
-            'message' => 'Login successfully!',
-            'cookie' => $cookie->getValue()
+            'message' => 'Login successfully!'
         ], 200)
         ->withCookie($cookie);
     }
